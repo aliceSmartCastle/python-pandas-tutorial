@@ -1,4 +1,4 @@
-# %%
+
 import pandas as pd
 
 
@@ -8,7 +8,7 @@ objects=(type(magic_land[magic_land.columns[2]].dtypes))
 
 
 
-# %%
+
 def  data_colunm_get(iter:pd.DataFrame):   #get any dataframe columns for any data
  data_row=[]
  for i in iter:
@@ -16,7 +16,7 @@ def  data_colunm_get(iter:pd.DataFrame):   #get any dataframe columns for any da
  return data_row
 
 
-# %%
+
 def get_dataframe_column(iter:pd.DataFrame,choose_colums:int,end_columns:int|None):  #get any dataframe columns for any data
     if  (choose_colums>len(iter.columns)) or (choose_colums<0):
         raise ValueError("choose_colums is not in range")
@@ -24,7 +24,7 @@ def get_dataframe_column(iter:pd.DataFrame,choose_colums:int,end_columns:int|Non
         return iter[iter.columns[choose_colums:end_columns]]
 
 
-# %%
+
 def feature_statistics(data:pd.DataFrame,index:list,feature:str):
      data_feature=data[index]
      for index in data_feature.columns:
@@ -55,15 +55,15 @@ def feature_statistics(data:pd.DataFrame,index:list,feature:str):
      
 
 
-# %%
+
 def data_uniform(data,index:str):
      print(f"unique data is {repr(data[index].unique())}") 
      print(data[index].value_counts())
 
 
-# %%
 
-# %%
+
+
 def duplicated_data_includ_test(data:pd.DataFrame,index:list,index_another:list):
         if not index or not index_another:
          return False
@@ -76,7 +76,7 @@ def duplicated_data_includ_test(data:pd.DataFrame,index:list,index_another:list)
         else:
            return True
 
-# %%
+
 def duplicated_data(data:pd.DataFrame,index:list,duplicate_index:list):
   if duplicated_data_includ_test(data=data,index=index,index_another=duplicate_index):
     if duplicate_index is not None:
@@ -87,7 +87,7 @@ def duplicated_data(data:pd.DataFrame,index:list,duplicate_index:list):
     raise ValueError("index_another is not in index")
  
 
-# %%
+
 def get_muit_columns_data(data:pd.DataFrame,index:list,index_another:list|None,keep:bool|str=False): # dataframe colunms index_another must include at  colunms index,can be call drop_duplicates()
     if index_another is None:
      return data.drop_duplicates(index)
@@ -100,7 +100,7 @@ def get_muit_columns_data(data:pd.DataFrame,index:list,index_another:list|None,k
       
 
 
-# %%
+
 def replace_data(data:pd.DataFrame,index_columns:list,replace_text:any):
         if type(replace_text)==type({}):
           return data[index_columns].replace(replace_text)
@@ -108,7 +108,7 @@ def replace_data(data:pd.DataFrame,index_columns:list,replace_text:any):
               return data[index_columns].replace(replace_text)
 
 
-# %%
+
 def mask_where(data:pd.DataFrame,index_columns:list,cond:bool,new_value:any,logic:str):
     if type(new_value)!=type([]):
      match logic:
@@ -123,7 +123,7 @@ def mask_where(data:pd.DataFrame,index_columns:list,cond:bool,new_value:any,logi
       
 
 
-# %%
+
 def sorting_data(data:pd.DataFrame,index_columns:list|None,set_index:list,ascending:bool|list):
     if index_columns is None:
       return data.sort_values(set_index,ascending=ascending)
@@ -141,14 +141,14 @@ def sorting_data(data:pd.DataFrame,index_columns:list|None,set_index:list,ascend
 
 
 
-# %%
+
 def data_set_index(data:pd.DataFrame,index_columns:list,set_indx:list):
     if duplicated_data_includ_test(data=data,index=index_columns,index_another=set_indx):
         return data[index_columns].set_index(set_indx)
     else:print("set index is not in index_columns")
 
 
-# %%
+
 def apply_data(data:pd.DataFrame|None,index_columns:list|pd.DataFrame|None,value,other_value=None,method:str|None=None): #value is anonymity function
     match method:
      case _:
@@ -163,9 +163,9 @@ def apply_data(data:pd.DataFrame|None,index_columns:list|pd.DataFrame|None,value
 
 
 
-# %%
+
 def rolling_apply_data(data:pd.DataFrame,index_columns:list|None,window:int,func:any,method:str|None=None,other:pd.Series|None=None,value:int|None=None):
-  if window>-1: 
+  if window>-0: 
     if method is not None:
       match method:
        case 'cov':
@@ -184,7 +184,7 @@ def rolling_apply_data(data:pd.DataFrame,index_columns:list|None,window:int,func
   else:print("window is not negative")
 
 
-# %%
+
 
 
 
